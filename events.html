@@ -180,8 +180,10 @@
               '<td>' + escapeHtml(event.date) + '</td>' +
               '<td>' + escapeHtml(event.location) + '</td>';
             tr.addEventListener('click', function () {
-              var url = event.url || '#';
-              if (url !== '#') window.open(url, '_blank');
+              var image = (event.image && event.image.trim()) ? event.image : '';
+              var url = event.url || '';
+              var target = image || url;
+              if (target) window.open(target, '_blank');
             });
             tr.addEventListener('keydown', function (e) {
               if (e.key === 'Enter' || e.key === ' ') {
